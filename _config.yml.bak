@@ -1,4 +1,5 @@
 title: Travis's Tech Blog
-description: The blog is to take notes for Travis's daily learning
+description: Noting Travis's daily life
 show_downloads: true
 theme: jekyll-theme-tactile
+encoding:utf-8

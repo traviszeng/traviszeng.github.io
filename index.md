@@ -6,7 +6,7 @@ Text can be **bold**, _italic_, or ~~strikethrough~~.
 
 [Link to another page](another-page).
 
-[Link to SQL summarize](SQL注入总结).
+[Link to SQL summarize](SQLInjectionSummarize).
 
 There should be whitespace between paragraphs.
 
