@@ -2,6 +2,15 @@
 layout: default
 ---
 
+##  [**TensorFlow初印象**](2017-5-17-tensorflow-lesson-one) 
+
+如今人工智能已经成为IT业界最炙手可热的研究方向，而google领衔开发的Tensorflow则是人工智能领域如今最璀璨的明珠。本文主要对TensorFlow做一个大体上的简介。
+
+5/18/2017 11:10:40 PM 
+
+
+----------
+
 
 ##  [**SQL注入总结**](2017-5-18-SQL-Injection-Summary)
 
@@ -20,5 +29,9 @@ layout: default
 
 
 ----------
+
+
+
+
 
 

