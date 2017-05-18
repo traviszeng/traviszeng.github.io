@@ -6,7 +6,9 @@ Text can be **bold**, _italic_, or ~~strikethrough~~.
 
 [Link to another page](another-page).
 
-[Link to SQL summarize](SQLInjectionSummarize).
+[Link to SQL summarize](SQLInjectionSummary).
+
+[用Python打造一个REPL](2017-5-18-python-REPL-development)。
 
 There should be whitespace between paragraphs.
 
