@@ -24,8 +24,11 @@ layout: default
 - TensorFlow通过数据并行、模型并行、流水线并行的并行计算模式来对神经网络的训练进行加速。
 
 ## 用一个例子说明 ##
-<div align = "center">
+
+<div align = "center" width = "300" height = "300">
+
 <img src="http://i.imgur.com/nfzc7sb.jpg" width = "300" height = "300" alt="图片名称" align=center />
+
 </div>
 
 以上图的运算流程为例，一个完整的tensorflow运算流程如下：
