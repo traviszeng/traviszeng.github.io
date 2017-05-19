@@ -26,7 +26,7 @@ Prompt Toolkit这个库是打造REPL的瑞士军刀，可以代替readline和cur
 当有时用户输入的命令太长的时候，直接使用命令行输入很很难进行调试，因此我们使用Click模块，使得用户输入长命令的时候可以在文本文档先进行书写，再导入到REPL进行执行。需要加入以下代码：
 
     import click
-    message = click.edit()
+	message = click.edit()
 
 ## Fuzzy Finder ##
 当我们需要对命令进行模糊匹配的时候，此时我们可以使用Fuzzy Finder。
