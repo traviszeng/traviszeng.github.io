@@ -25,11 +25,10 @@ layout: default
 
 ## 用一个例子说明 ##
 
-<div align = "center" width = "300" height = "300">
 
-<img src="http://i.imgur.com/nfzc7sb.jpg" width = "300" height = "300" alt="图片名称" align=center />
+![](http://i.imgur.com/z129pB9.jpg)
 
-</div>
+
 
 以上图的运算流程为例，一个完整的tensorflow运算流程如下：
 
@@ -66,9 +65,7 @@ TensorFlow既可以用CPU进行计算，也可以使用GPU集群运算，这里�
 
 我们在这里使用的数据集是tensorflow的一个example,MNIST数字的呈现方式是一个28*28像素的灰度图，如下图所示：
 
-<div align = "center">
-<img src="http://i.imgur.com/22aNSeL.png" width = "400" height = "100" alt="图片名称" align=center />
-</div>
+![](http://i.imgur.com/XKq6mAq.png)
 
 空白的部分为0，有颜色的地方根据颜色深浅分别为0到1的取值。在MNIST数据集中，将每张图片的28\*28=784个像素点编程一个一维的vector，至此，这张图片的可以由一个1\*784的向量进行表示,每张图片的784个值表示为图片的特征(feature)。而我们的目标是训练出来一个可以识别手写数字是多少的机器。从0-9有是个类别，因此这是一个multi-class classification的问题，所以对于每一个图片的分类我们都用一个1\*10的向量进行标识，例如[0,0,1,0,0,0,0,0,0,0]表示这个数字是2。了解这些之后，我们可以开始我们的tensorflow之旅了，第一步就是导入数据集：
 
@@ -92,9 +89,9 @@ TensorFlow既可以用CPU进行计算，也可以使用GPU集群运算，这里�
 
 当我们在进行这个实验的时候，由于简单期间，因此使用的神经网络只有简单的输入层和输出层，softmax的流程如下图所示：
 
-<div align = "center">
-<img src="http://i.imgur.com/FtNyihO.jpg" width = "500" height = "200" alt="图片名称" align=center />
-</div>
+
+![](http://i.imgur.com/Yh6XNts.jpg)
+
 Softmax Regression相当于是一个筛选器的作用，帮助我们通过计算得到的结果获得最终希望获得的0、1序列，在softmax中还会对结果进行正则化操作(regularization)。用公式化的语言表示：
 **y=softmax(w\*x+b)**
 
@@ -114,9 +111,9 @@ Softmax Regression相当于是一个筛选器的作用，帮助我们通过计�
 
 ### Step 4：定义Cost Function ###
 在我们训练模型的时候，我们需要定义cost Function来衡量这个模型到底和数据的契合度是多少。Cost越小说明契合度越高，训练的目的就是为了不断将这个Cost降低，直至找到一个全局最优解(global optimal)或者是局部最优解。在这里我们使用cross-entropy作为我们的costFunction:
-<div align = "center">
-<img src="http://i.imgur.com/LDPHDLZ.png" width = "300" height = "100" alt="图片名称" align=center />
-</div>
+
+![](http://i.imgur.com/NXjAOij.png)
+
 
 定义cross-entropy方法如下：
 
