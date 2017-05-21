@@ -10,18 +10,6 @@
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
     <title>{{ site.title | default: site.github.repository_name }} by {{ site.github.owner_name }}</title>
-
-	<script>
-		var _hmt = _hmt || [];
-		(function() {
-		var hm = document.createElement("script");
-		hm.src = "https://hm.baidu.com/hm.js?8b08976cfddd7d4eb258a828c1ed37be";
-		 var s = document.getElementsByTagName("script")[0]; 
-		s.parentNode.insertBefore(hm, s);
-		})();
-	</script>
-
-
   </head>
 
   <body>
