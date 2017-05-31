@@ -2,6 +2,11 @@
 layout: default
 ---
 
+##  [**SVM学习笔记**](2017-5-31-Support-Vector-Machine) 
+支持向量机，就是常说的SVM，为学习复杂的非线性方程提供一种更为清晰，更加强大的方式。本文是对SVM的学习小结。
+
+2017/5/31 11:55:31 
+
 ##  [**TensorFlow初印象**](2017-5-17-tensorflow-lesson-one) 
 
 如今人工智能已经成为IT业界最炙手可热的研究方向，而google领衔开发的Tensorflow则是人工智能领域如今最璀璨的明珠。本文主要对TensorFlow做一个大体上的简介。
