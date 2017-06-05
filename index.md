@@ -2,10 +2,21 @@
 layout: default
 ---
 
+##  [**无监督学习之K-MEANS和PCA降维**](2017-6-5-KMEANS-AND-PCA) 
+在使用unsupervised learning的时候使用的最多的算法就是K-MEANS,本文主要对K-MEANS算法进行介绍以及介绍PCA降维的方法来对学习模型进行压缩优化。
+
+2017/6/5 12:06:53 
+
+----------
+
+
+
 ##  [**SVM学习笔记**](2017-5-31-Support-Vector-Machine) 
 支持向量机，就是常说的SVM，为学习复杂的非线性方程提供一种更为清晰，更加强大的方式。本文是对SVM的学习小结。
 
 2017/5/31 11:55:31 
+
+----------
 
 ##  [**TensorFlow初印象**](2017-5-17-tensorflow-lesson-one) 
 
