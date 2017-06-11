@@ -1,0 +1,50 @@
+*{
+	margin: 0px;
+	padding: 0px;
+}
+.title{
+		width: 200px;
+		height: 50px;
+		text-align: center;
+		margin: 0 auto;
+		font-size: 34px;
+		padding-top: 10px;
+		color: red;
+}
+.btn{
+	width: 190px;
+	height: 30px;
+	margin: 0 auto;
+	font-size: 12px;
+	margin-top: 20px;
+
+}
+.btn span{
+	display: block;
+	width: 80px;
+	height: 30px;
+	text-align: center;
+	line-height: 30px;
+	margin-right: 10px;
+	font-family: "微软雅黑";
+	background: black;
+	border: 1px solid #C1CDCD;
+	color: white;
+	float: left;
+	cursor: pointer;
+}
+#buttom{
+	color: black;
+	background: #99CC66;
+	width: 100px;
+	height: 80px;
+	line-height: 80px;
+	text-align: center;
+	transition: opacity 0.4s;
+	border-radius: 5px;
+	cursor: pointer;
+	box-shadow: 0 0 3px;
+}
+#buttom:hover{
+	opacity: 0.3;
+}

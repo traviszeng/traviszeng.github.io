@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>myself html</title>
+	<style type="text/css">
+		*{
+			margin: 0px;
+			padding: 0px;
+			font-size: 14px;
+			font-family: "微软雅黑";
+		}
+		li{
+			list-style-type: none;
+		}
+		#left{
+			position: fixed;
+			left: 50px;
+			top: 150px;
+			height: 24px;
+			width: 120px;
+			overflow: hidden;
+			transition:height 0.4s;
+		}
+		#ul1{
+			margin-top: 20px;
+		}
+		#ul1 li{
+			height: 30px;
+			margin-top: 10px;
+		}
+		#ul1 li a{
+			position: absolute;
+			left: 8px;
+			text-align: center;
+			font-size: 20px;
+			color: #009999;
+			text-decoration: none;
+		}
+		#left:hover{
+			height: 180px;
+
+		}
+		#ul1 a:hover{
+					color: #00CC00;	
+		}
+		#left img{
+			cursor: pointer;
+		}
+		#middle{
+			margin: 0 auto;
+			width: 50%;
+		}
+		#right{
+			position: fixed;
+			right: 100px;
+			top: 20px;
+		}
+		#M1{
+			height: 200px;
+			line-height: 200px;
+			color:#009999;
+			text-align: center;
+		}
+		#M1 p{
+						font-size: 50px;
+		}
+		#M2{
+				height: 500px;
+		}
+		#M3{
+						background: #FFF;
+	
+		}
+		#M3 fieldset{
+				height: 200px;
+				position: relative;
+				border-color: #009999;
+				border-radius: 5px;
+				color: #009999;
+		}
+		#M4{
+			position: absolute;
+			top: 90px;
+			left: 45%;
+			
+		}
+		#M4 input{
+			cursor: pointer;
+		}
+		#denglu{
+			display: none;
+			height: 0px;
+			width: 500px;
+			position: fixed;
+			background: #009999;
+			left: 35%;
+			top: 200px; 
+			border: #006699 solid 1px;
+			border-radius: 10px;
+			box-shadow: 0 0 8px;
+		}
+		#closeBut{
+			position: absolute;
+			right: 2px;
+			top: 2px;
+			cursor: pointer;
+		}
+		#login{
+			position: absolute;
+			left: 150px;
+			top: 250px;
+			width: 50px;
+			height: 30px;
+			background: #99CCCC;
+			text-align: center;
+			line-height: 30px;
+			border-radius: 5px;
+			box-shadow: 0 0 2px #99CCCC;
+			cursor: pointer;
+		}
+		#login:hover{
+			color: white;
+			box-shadow: 0 0 8px #99CCCC;
+		}
+		#sign2{
+			position: absolute;
+			left: 300px;
+			top: 250px;
+			width: 50px;
+			height: 30px;
+			background: #99CCCC;
+			text-align: center;
+			line-height: 30px;
+			border-radius: 5px;
+			box-shadow: 0 0 2px #99CCCC;
+			cursor: pointer;
+		}
+		#sign2:hover  a{
+			color: white;
+			box-shadow: 0 0 8px #99CCCC;
+		}
+		#sign2 a{
+			text-decoration: none;
+			color: black;
+		}
+		#sign3{
+			position: absolute;
+			top: 80px;
+			left: 120px;
+
+		}
+		#sign3 li{
+			margin-top: 30px;
+			
+		}
+		#sign3 input{
+			margin-left: 20px;
+		}
+		#sign3 span{
+						font-size: 20px;
+		}
+		#sign4{
+			font-size: 25px;
+			position: absolute;
+			top: 20px;
+			left: 230px;
+		}
+		#M2jpg{
+			height: 500px;
+			overflow: hidden;
+			width: 70%;
+			float: left;
+		}
+		#M2text{
+			width: 30%;
+			height: 500px;
+			float: left;
+			line-height: 50px;
+
+		}
+		#M2text p {
+						font-size: 25px;
+		}
+	</style>
+</head>
+<body>
+	<div id="left"><img src="img/click (2).png">
+		<div id="ul1">
+			<ul>
+				<li><a href ="#">了解更多</a></li>
+				<li><a href ="flappyBirdGame.html">自制游戏</a></li>
+				<li><a href ="抽奖.html">免费抽奖</a></li>
+			</ul>
+		</div>
+	</div>
+	<div id="middle">
+		<div id="M1"><p>欢迎来到我的主页</p></div>
+		<div id="M2">
+			<div id="M2jpg"><img src="img/me.jpg"></div>
+			<div id="M2text">
+				<p>大家好，我是曾健，这是我做的网页，你们喜欢吗？</p>
+			</div>
+		</div>
+		<div id="M3"><fieldset><legend>留言板</legend><div id="M4"> <input type="button" name="sign" id="sign1" value="登录后可查看"> </div></fieldset></div>
+	</div>
+	<div id="right"><p>现在的时间是：<span id="time"></span></p></div>
+	<div id="denglu">
+		<div id="closeBut"><img src="img/close2.png"></div>
+		<div id="sign4">登录</div>
+		<div id="sign3">
+			<ul>
+				<li><span>账号:</span><input type="text" name="zhanghao" id="zhanghao"></li>
+				<li><span>密码:</span><input type="password" name="password" id="password"></li>
+			</ul>
+		</div>
+		<div id="login">登录</div>
+		<div id="sign2"><a href="sign2.html">注册</a></div>
+	</div>
+
+
+
+	<script type="text/javascript" src="js/jquery-3.1.0.js"></script>
+	<script type="text/javascript">
+		var	nWEEK = new Array()
+		nWEEK[0] = "星期天"
+		nWEEK[1] = "星期一"
+		nWEEK[2] = "星期二"
+		nWEEK[3] = "星期三"
+		nWEEK[4] = "星期四"
+		nWEEK[5] = "星期五"
+		nWEEK[6] = "星期六"
+		window.onload = function () {
+			setTimeout(runtime,500);
+
+		}
+		$("#sign1").click(function(){
+				$("#denglu").css("display","block");
+				$("#denglu").animate({
+					height:'300px'
+				});
+			});
+		$("#closeBut").click(function(){			
+			$("#denglu").animate({
+				height:'0px'
+			},function(){
+				$("#denglu").css("display","none");			
+		});
+		});
+		function runtime() {
+			var now = new Date();
+			var nYear = now.getFullYear();
+			var nMonth = now.getMonth();
+			var nday = now.getDate();
+			var nWeek = now.getDay();
+			var nHour = now.getHours();
+			var nMin = now.getMinutes();
+			var nSec = now.getSeconds();
+			var oDiv = document.getElementById('time');
+			nSec = checkTime(nSec);
+			nMin = checkTime(nMin);
+			oDiv.innerHTML = nYear+"年"+nMonth + "月" +nday+ "日"+ nWEEK[nWeek]+nHour+"时"+ nMin+"分"+nSec+ "秒" ;
+			setTimeout(runtime,500);
+		}
+		function checkTime(time) {
+			if(time<10)
+			{
+				time = "0"+time;
+			}
+			return time;
+		}
+		$("#login").click(function(){
+			if($("#zhanghao").val()=="admin" && $("#password").val()=="admin")
+			{
+				alert("登录成功！");
+				window.location.href="留言板.html"
+			}
+			else{
+				window.alert("登录失败，请重新输入！")
+			}
+		});
+		$("#sign2").click(function(){
+			window.location.href = "sign2.html"
+		})
+	</script>
+</body>
+</html>

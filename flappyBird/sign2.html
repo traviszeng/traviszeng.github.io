@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>sign</title>
+	<style>
+		#sign{
+			width: 330px;
+			margin: 0px  auto;
+		}
+		.xxu {
+			width: 70px;
+			display: inline-block;
+		}
+		#back{
+				margin-right: 50px;
+				margin-left: 120px;
+				margin-top: 30px;
+		}
+		#sign2{
+
+		}
+		label.error{
+			display: block;
+			color: red;
+		}
+	</style>
+</head>
+<body>
+	<div id="sign">
+	<form id="form1">
+		<fieldset>
+			<legend>注册</legend>
+			<p>
+				<label class="xxu">账号:</label>
+				<input type="text" name="username" id="username">
+			</p>
+			<p>
+				<label class="xxu">密码:</label>
+				<input type="password" name="password" id="password">
+			</p>
+			<p>
+				<label class="xxu">确认密码:</label>
+				<input type="password" name="confirmpassword" id="confirmpassword">
+			</p>
+			<p>
+				<input type="button" name="back" id="back" value="返回">
+				<input type="submit" value="注册" id="sign2">
+			</p>
+		</fieldset>
+		</form>
+	</div>
+	<script  src="js/jquery-3.1.0.js"></script>
+	<script  src="js/jquery.validate-1.13.1.js"></script>
+	<script type="text/javascript">
+		var validate1 ;
+		$(document).ready(function(){
+			validate1 = $("#form1").validate({
+				debug:true,
+				rules:{
+					username:{
+						required:true,
+						minlength:2,
+						maxlength:10
+					},
+					password:{
+						required:true,
+						minlength:2,
+						maxlength:10
+					},
+					confirmpassword:{
+						equalTo:"#password"
+					}
+				},
+				messages:{
+					username:{
+						required:'请输入用户名',
+						minlength:'最少输入两位用户名',
+						maxlength:'最多输入十位用户名'
+					},
+					password:{
+						required:'请输入密码',
+						minlength:'最少输入两位密码',
+						maxlength:'最多输入十位用户名'
+					},
+					confirmpassword:{
+						equalTo:"请输入两次一样的密码"
+					}
+				}
+			});
+		});
+		$("#back").click(function(){
+			window.location.href="index2.html"
+		});
+		$("#sign2").click(function(){
+			if($("#form1").valid())
+				{
+	
+						alert("注册成功!");
+						window.location.href="index2.html";
+				}
+		});
+	</script>
+</body>
+</html>
