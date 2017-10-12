@@ -2,6 +2,12 @@
 layout: default
 ---
 
+##  [**Neural Network笔记1**](2017-10-12-neural-network-note1) 
+由于最近需要开始研究神经网络方面的项目，于是乎在重新再看Geoffrey Hinton大神的Neural Network for machine learning的公开课，跟着Hinton大神再把神经网络的东西过一遍。
+
+2017/10/12 22:03:21 
+
+
 ##  [**无监督学习之K-MEANS和PCA降维**](2017-6-5-KMEANS-AND-PCA) 
 在使用unsupervised learning的时候使用的最多的算法就是K-MEANS,本文主要对K-MEANS算法进行介绍以及介绍PCA降维的方法来对学习模型进行压缩优化。
 
