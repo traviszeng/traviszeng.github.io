@@ -7,6 +7,9 @@ layout: default
 
 2017/10/12 22:03:21 
 
+----------
+
+
 
 ##  [**无监督学习之K-MEANS和PCA降维**](2017-6-5-KMEANS-AND-PCA) 
 在使用unsupervised learning的时候使用的最多的算法就是K-MEANS,本文主要对K-MEANS算法进行介绍以及介绍PCA降维的方法来对学习模型进行压缩优化。
