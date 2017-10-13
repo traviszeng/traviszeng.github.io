@@ -2,8 +2,8 @@
 layout: default
 ---
 
-##  [**Neural Network笔记1**](2017-10-12-neural-network-note1) 
-由于最近需要开始研究神经网络方面的项目，于是乎在重新再看Geoffrey Hinton大神的Neural Network for machine learning的公开课，跟着Hinton大神再把神经网络的东西过一遍。
+##  [**Neural Network笔记之感知机**](2017-10-12-neural-network-note-perceptron) 
+由于最近需要开始研究神经网络方面的项目，于是乎在重新再看Geoffrey Hinton大神的Neural Network for machine learning的公开课，跟着Hinton大神再把神经网络的东西过一遍。本文主要是对感知机的相关知识进行总结归纳。
 
 2017/10/12 22:03:21 
 
