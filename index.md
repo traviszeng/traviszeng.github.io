@@ -2,6 +2,14 @@
 layout: default
 ---
 
+##  [**Neural Network笔记之自编码器与稀疏性**](2017-10-14-Autoencoder-and-sparsity)
+自编码器是具有一层隐含层的神经网络,是一种尽可能复现输入信号的神经网络。为了实现这种复现，自动编码器就必须捕捉可以代表输入数据的最重要的因素，就像PCA那样，找到可以代表原信息的主要成分。本文主要对自编码器和稀疏性进行简要介绍。
+
+10/14/2017 3:56:03 PM 
+ 
+----------
+
+
 ##  [**Neural Network笔记之感知机**](2017-10-12-neural-network-note-perceptron) 
 由于最近需要开始研究神经网络方面的项目，于是乎在重新再看Geoffrey Hinton大神的Neural Network for machine learning的公开课，跟着Hinton大神再把神经网络的东西过一遍。本文主要是对感知机的相关知识进行总结归纳。
 
