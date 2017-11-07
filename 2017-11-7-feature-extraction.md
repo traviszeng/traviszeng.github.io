@@ -75,17 +75,18 @@ L1正则化和L2正则化可以看做是损失函数的惩罚项。所谓『惩�
 
 一般回归分析中回归w表示特征的系数，从上式可以看到正则化项是对系数做了处理（限制）。L1正则化和L2正则化的说明如下：
 
- ** L1正则化是指权值向量w中各个元素的绝对值之和，通常表示为||w||1 **
+ L1正则化是指权值向量w中各个元素的绝对值之和，通常表示为![](https://i.imgur.com/3naLPsu.png)
 
- **L2正则化是指权值向量w中各个元素的平方和然后再求平方根（可以看到Ridge回归的L2正则化项有平方符号），通常表示为||w||2**
+
+ L2正则化是指权值向量w中各个元素的平方和然后再求平方根（可以看到Ridge回归的L2正则化项有平方符号），通常表示为![](https://i.imgur.com/rfhPP6H.png)
 
 一般都会在正则化项之前添加一个系数，Python中用α表示，一些文章也用λ表示。这个系数需要用户指定。
 
 那添加L1和L2正则化有什么用？下面是L1正则化和L2正则化的作用，这些表述可以在很多文章中找到。
 
- ** L1正则化可以产生稀疏权值矩阵，即产生一个稀疏模型，可以用于特征选择**
+ L1正则化可以产生稀疏权值矩阵，即产生一个稀疏模型，可以用于特征选择
 
- ** L2正则化可以防止模型过拟合（overfitting）；一定程度上，L1也可以防止过拟合**
+ L2正则化可以防止模型过拟合（overfitting）；一定程度上，L1也可以防止过拟合
 
 
 函数normalize 提供了一个快速有简单的方式在一个单向量上来实现这正则化的功能。正则化有l1,l2等，这些都可以用上：
@@ -102,5 +103,70 @@ L1正则化和L2正则化可以看做是损失函数的惩罚项。所谓『惩�
  		[ 1.          0.          0.        ]
  		[ 0.          0.70710678 -0.70710678]]
 
-3. 归一化
+preprocessing这个模块还提供了一个实用类Normalizer,实用transform方法同样也可以对新的数据进行同样的转换
+
+	# 根据训练数据创建一个正则器
+	normalizer = preprocessing.Normalizer().fit(x)
+	normalizer
+		Normalizer(copy=True, norm='l2')
+
+	# 对训练数据进行正则
+	normalizer.transform(x)
+		array([[ 0.40824829, -0.40824829,  0.81649658],
+			   [ 1.        ,  0.        ,  0.        ],
+		       [ 0.        ,  0.70710678, -0.70710678]])
+
+	# 对新的测试数据进行正则
+	normalizer.transform([[-1., 1., 0.]])
+		array([[-0.70710678,  0.70710678,  0.        ]])
+
+
+（3） 归一化
+
+归一化即使得特征的分布是在一个给定最小值和最大值的范围内的。一般情况是将其映射到[0,1]区间内，或者特征中绝对值最大的那个数为1，其他数以此为标准分布在[-1,1]内。
+
+以上两者分别可以通过MinMaxScaler 或者 MaxAbsScaler方法来实现。
+之所以需要将特征规模化到一定的[0,1]范围内，是为了对付那些标准差相当小的特征并且保留下稀疏数据中的0值。
+
+MinMaxScaler
+
+在MinMaxScaler中是给定了一个明确的最大值与最小值。它的计算公式如下：
+
+X_std = (X - X.min(axis=0)) / (X.max(axis=0) - X.min(axis=0))
+
+X_scaled = X_std / (max - min) + min
+
+以下这个例子是将数据规与[0,1]之间，每个特征中的最小值变成了0，最大值变成了1，请看：
+
+	min_max_scaler = preprocessing.MinMaxScaler()
+	x_minmax = min_max_scaler.fit_transform(x)
+	x_minmax
+		array([[ 0.5       ,  0.        ,  1.        ],
+		       [ 1.        ,  0.5       ,  0.33333333],
+		       [ 0.        ,  1.        ,  0.        ]])
+
+当有新的数据要处理时如下：
+
+	x_test = np.array([[-3., -1., 4.]])
+	x_test_minmax = min_max_scaler.transform(x_test)
+	x_test_minmax
+		array([[-1.5       ,  0.        ,  1.66666667]])
+
+MaxAbsScaler
+
+原理与上面的很像，只是数据会被规模化到[-1,1]之间。也就是特征中，所有数据都会除以最大值。这个方法对那些已经中心化均值维0或者稀疏的数据有意义。
+
+	max_abs_scaler = preprocessing.MaxAbsScaler()
+	x_train_maxsbs = max_abs_scaler.fit_transform(x)
+	x_train_maxsbs
+		array([[ 0.5, -1. ,  1. ],
+		       [ 1. ,  0. ,  0. ],
+		       [ 0. ,  1. , -0.5]])
+
+	# 同理，也可以对新的数据集进行同样的转换
+	x_test = np.array([[-3., -1., 4.]])
+	x_test_maxabs = max_abs_scaler.transform(x_test)
+	x_test_maxabs
+		array([[-1.5, -1. ,  2. ]])
+
 
