@@ -133,7 +133,7 @@ Iris数据集是一个包含150个样本的数据集，主要是用于区分花�
 tf.contrib.learn中的Dataset是命名元组；您可以通过data和target字段访问特征数据和目标值。这里training_set.data和training_set.target分别包含训练集的特征数据和目标值；test_set.data和test_set.target分别包含测试集的特征数据和目标值。
 
 
-###构建一个DNN分类器 ###
+### 构建一个DNN分类器 ###
 
 tf.contrib.learn提供了一系列预定义的模型，叫做Estimators。通过Estimator，可以帮助我们很方便地对数据进行训练和评估，在这里，我们配置一个深层神经网络分类器模型来适配IRIS数据，通过使用tf.contrib.learn，可以使用一行代码就帮助我们实例化一个tf.contrib.learn.DNNClassifier.
 
@@ -153,7 +153,7 @@ n_classes=3。三个目标类，代表三个鸢尾物种。
 
 model_dir=/tmp/iris_model。TensorFlow在模型训练期间将保存检查点数据的目录。有关使用TensorFlow进行日志记录和监视的更多信息，请见使用tf.contrib.learn记录和监视的基本知识。
 
-###使用定义好的分类器用于IRIS训练集训练###
+### 使用定义好的分类器用于IRIS训练集训练 ###
 
 现在，你已经配置好了你的DNNclassifier模型，你可以使用fit方法来将Iris训练数据应用到分类器上。将特征数据（training_set.data），目标值（training_set.target）和要训练的步数（这里是2000）作为参数传递：
 
@@ -167,7 +167,7 @@ model_dir=/tmp/iris_model。TensorFlow在模型训练期间将保存检查点数
 
 可以看到，最后一轮迭代得到的loss为0.0252。这时候其实已经得到一个较好的训练模型了。
 
-###评估训练效果###
+### 评估训练效果 ###
 
 现在已经将Iris的训练数据适配到了DNNClassifier模型上；现在，可以使用evaluate方法在Iris测试数据上检查其准确性。像fit（拟合）一样，evaluate（评估操作）将特征数据和目标值作为参数，并返回带有评估结果的dict（字典）。以下代码通过了Iris测试数据-test_set.data和test_set.target来评估和打印结果的准确性：
 
@@ -176,7 +176,7 @@ model_dir=/tmp/iris_model。TensorFlow在模型训练期间将保存检查点数
 
 可以得到结果的准确度大概在97%左右，当然这个结果可能在不同机器上有差异。
 
-###分类新样本###
+### 分类新样本 ###
 
 当我们有一个新的样本的时候，我们可以使用predict()方法来分类一个新的样本。
 
@@ -193,6 +193,6 @@ predict()方法返回了一个预测数组，每个样本对应其中的一个�
 
 
 
-##Conclusion##
+## Conclusion ##
 
 这样，利用IRIS数据我们完整的执行了一次深度神经网络的构建和训练，可以看到，使用Tensorflow可以高效的完成这一工作，TF大法好。
