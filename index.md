@@ -1,6 +1,18 @@
 ---
 layout: default
 ---
+
+##  [**使用IRIS数据集进行深度神经网络训练**](2017-11-9-tensorflow-example-using-iris-data)
+本文主要以Iris数据集为例子讲解如何训练一个简单的Deep Neural Network。
+
+11/9/2017 11:41:03 AM 
+
+
+----------
+
+
+
+
 ##  [**特征提取之数字型特征提取**](2017-11-7-numeric-feature-extraction)
 
 在机器学习中，特征提取常常是一个巨大的工程，常见的特征提取有数字型和文本型最为常见...
