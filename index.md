@@ -1,6 +1,15 @@
 ---
 layout: default
 ---
+##  [**K临近算法简介和实践**](2017-11-11-abnormal-ops-detection-using-KNN)
+KNN算法（K-Nearest Neighbors）算法是机器学习领域广泛使用的分类算法之一，所谓KNN，说的就是每个样本的分类都可以用它最接近的K个邻居来代表。本文主要对KNN算法进行简要介绍，以及使用KNN算法对linux异常操作进行检测。
+
+11/13/2017 5:08:22 PM 
+
+
+----------
+
+
 
 ##  [**使用IRIS数据集进行深度神经网络训练**](2017-11-9-tensorflow-example-using-iris-data)
 本文主要以Iris数据集为例子讲解如何训练一个简单的Deep Neural Network。
