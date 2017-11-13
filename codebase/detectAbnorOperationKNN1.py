@@ -14,6 +14,8 @@ from sklearn.neighbors import KNeighborsClassifier
 
 from sklearn.metrics import classification_report
 from sklearn import metrics
+from sklearn.model_selection import cross_val_score
+
 
 #测试样本数
 N=90
@@ -67,6 +69,37 @@ def get_user_cmd_feature(user_cmd_list,dist_max,dist_min):
         user_cmd_feature.append(x)
     return user_cmd_feature
 
+def load_user_cmd_new(filename):
+    cmd_list=[]
+    dist=[]
+    with open(filename) as f:
+        i=0
+        x=[]
+        for line in f:
+            line=line.strip('\n')
+            x.append(line)
+            dist.append(line)
+            i+=1
+            if i == 100:
+                cmd_list.append(x)
+                x=[]
+                i=0
+
+    fdist = list(FreqDist(dist).keys())
+    return cmd_list,fdist
+
+def get_user_cmd_feature_new(user_cmd_list,dist):
+    user_cmd_feature=[]
+
+    for cmd_list in user_cmd_list:
+        v=[0]*len(dist)
+        for i in range(0,len(dist)):
+            if dist[i] in cmd_list:
+                v[i]+=1
+        user_cmd_feature.append(v)
+
+    return user_cmd_feature
+
 def get_label(filename,index=0):
     x=[]
     with open(filename) as f:
@@ -77,8 +110,12 @@ def get_label(filename,index=0):
 
 if __name__ == '__main__':
     
-    user_cmd_list,user_cmd_dist_max,user_cmd_dist_min=load_user_cmd("../data/MasqueradeDat/User3")
-    user_cmd_feature=get_user_cmd_feature(user_cmd_list,user_cmd_dist_max,user_cmd_dist_min)
+    #user_cmd_list,user_cmd_dist_max,user_cmd_dist_min=load_user_cmd("../data/MasqueradeDat/User3")
+    #user_cmd_feature=get_user_cmd_feature(user_cmd_list,user_cmd_dist_max,user_cmd_dist_min)
+    user_cmd_list,dist=load_user_cmd_new("../data/MasqueradeDat/User3")
+    print("Dist:(%s)" % dist)
+    user_cmd_feature=get_user_cmd_feature_new(user_cmd_list,dist)
+
     #index=2 即为User3对应的label
     labels=get_label("../data/MasqueradeDat/label.txt",2)
     #前5000个记录为正常操作 即前50个序列为正常操作
@@ -94,7 +131,9 @@ if __name__ == '__main__':
     neigh.fit(x_train, y_train)
     y_predict=neigh.predict(x_test)
 
-    score=np.mean(y_test==y_predict)*100
+    #score=np.mean(y_test==y_predict)*100
+    
+    score=cross_val_score(neigh,user_cmd_feature,y,n_jobs = -1,cv=10)
 
     #print y
     #print y_train
