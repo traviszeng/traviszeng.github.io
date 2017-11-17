@@ -216,4 +216,5 @@ KNN算法的基本思路是：
 
 ![](https://i.imgur.com/UNfjUks.png)
 
+除了以上的几个例子，使用KNN来进行webshell检测和rootkit检测的例子可以参考[https://github.com/traviszeng/MLWithWebSecurity/tree/master/code/KNNsample](https://github.com/traviszeng/MLWithWebSecurity/tree/master/code/KNNsample)
 	
