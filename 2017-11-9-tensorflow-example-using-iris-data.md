@@ -1,3 +1,7 @@
+---
+layout: default
+---
+
 本文主要以Iris数据集为例子讲解如何训练一个简单的Deep Neural Network。
 
 ## 环境配置 ##
