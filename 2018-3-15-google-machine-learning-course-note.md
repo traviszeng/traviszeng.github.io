@@ -1,3 +1,8 @@
+---
+layout: default
+---
+
+
 许久没写过笔记，最近在跟进Google刚刚开源的自家使用Tensorflow的ML学习教程，将ML从头捋一捋。
 
 
