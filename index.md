@@ -2,6 +2,17 @@
 layout: default
 ---
 
+##  [**Kaggle学习之路**](2018-8-28-my-kaggle-route)
+
+Kaggle竞赛学习之路
+
+8/28/2018 8:44:03 PM 
+
+----------
+
+
+
+
 ##  [**Google机器学习教程笔记（二）**](2018-3-18-google-machine-learning-course-note2)
 
 前面谈到了数据集合的划分，接下来我们开始谈一下如何获得我们想要的特征集...
