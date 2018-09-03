@@ -70,4 +70,27 @@ Conclusion:
 - Feed-forward NNs produce smooth non-linear decision
 boundary
 
+### Feature preprocessiong and generation ##
 
+- Numeric features
+
+![](https://i.imgur.com/W6qyTD9.png)
+
+![](https://i.imgur.com/Lv8Ynxc.png)
+
+- Categorical and ordinal features
+
+![](https://i.imgur.com/BH3NkVl.png)
+
+
+- Datetime and coordinates
+
+![](https://i.imgur.com/cKKIflU.png)
+
+- Handling missing values
+
+![](https://i.imgur.com/mzVb80k.png)
+
+[更多关于特征工程的资料1](https://machinelearningmastery.com/discover-feature-engineering-how-to-engineer-features-and-how-to-get-good-at-it/ "特征工程")
+
+[更多关于特征工程的资料2](https://www.quora.com/What-are-some-best-practices-in-Feature-Engineering)
