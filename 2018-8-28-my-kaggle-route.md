@@ -94,3 +94,38 @@ boundary
 [更多关于特征工程的资料1](https://machinelearningmastery.com/discover-feature-engineering-how-to-engineer-features-and-how-to-get-good-at-it/ "特征工程")
 
 [更多关于特征工程的资料2](https://www.quora.com/What-are-some-best-practices-in-Feature-Engineering)
+
+### 自然语言处理
+
+Word of bags
+
+![](https://i.imgur.com/mjataqs.png)
+
+TF-IDF
+
+![](https://i.imgur.com/rnewKhL.png)
+
+![](https://i.imgur.com/O7YdRNq.png)
+
+N-grams
+
+![](https://i.imgur.com/oQhPFui.png)
+
+Text preprocessing
+
+- Lowercase
+
+![](https://i.imgur.com/JJArXs0.png)
+
+- Lemmatization and stemming
+
+![](https://i.imgur.com/yVlzDal.png)
+
+- Stop words
+
+![](https://i.imgur.com/e5CIgU1.png)
+
+
+**Conclusion**
+
+![](https://i.imgur.com/xZtJl0r.png)
