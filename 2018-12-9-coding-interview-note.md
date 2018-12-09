@@ -147,3 +147,33 @@
         }
     }	
 在内部定义一个私有类型Nested，只有在Nested被调用的时候才会使用静态构造方法生成instance。而Nested仅在Singleton5的Instance中被调用。因此，当调用不需要使用Singleton5的instance的时候，就不会触发.Net运行时调用Nested，则不会创建实例，做到按需创建。
+
+##面试题三
+
+**NOTE：在C/C++中，当数组作为函数的参数进行传递时，数组就自动退化为同类型的指针。**
+
+example:
+
+	#include<iostream>
+	using namespace std;
+	int GetSize(int data[]) {
+		return sizeof(data);
+	}
+	
+	int main() {
+		int data1[] = { 1,2,3,4,5 };
+		int size1 = sizeof(data1);
+	
+		int* data2 = data1;
+		int size2 = sizeof(data2);
+		int size3 = GetSize(data1);
+		cout << size1 << " " << size2 << " " << size3 << endl;
+	}
+
+输出结果为20 4 4，size1求得是数组的大小，5个整数，每个整数占4个字节，因此占20个字节，size2，求的是int类型指针的大小，在32位系统上，对任意指针求sizeof都是4个字节。在C/C++中，当数组作为函数的参数进行传递时，数组就自动退化为同类型的指针。因此，尽管GetSize的参数data为数组，但它会退化为指针。
+
+面试题3（一）：找出数组中重复的数字
+
+题目：在一个长度为n的数组里的所有数字都在0到n-1的范围内。数组中某些数字是重复的，但不知道有几个数字重复了，
+也不知道每个数字重复了几次。请找出数组中任意一个重复的数字。例如，如果输入长度为7的数组{2, 3, 1, 0, 2, 5, 3}，
+那么对应的输出是重复的数字2或者3。
