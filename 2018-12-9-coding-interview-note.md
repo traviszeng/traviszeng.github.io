@@ -1,3 +1,7 @@
+---
+layout: default
+---
+
 #剑指Offer笔记#
 
 ## 面试题二 ##
