@@ -278,7 +278,7 @@ example:
 
 题目：在一个二维数组中，每一行都按照从左到右递增的顺序排序，每一列都按照从上到下递增的顺序排序。请完成一个函数，输入这样的一个二维数组和一个整数，判断数组中是否含有该整数。
 
-每次取右上角的数字，若要寻找的数字=右上角，则找到；否则，如果比右上角数字大，则去掉当前行；如果比右上角数字小，则去掉当前列
+每次取右上角的数字，若要寻找的数字=右上角，则找到；否则，如果比右上角数字大，则去掉当前行；如果比右上角数字小，则去掉当前列。
 
 	bool Find(int* matrix, int rows, int columns, int number)
 	{
@@ -305,3 +305,26 @@ example:
 	    return found;
 	}
 
+## 面试题五 ##
+
+为了节省空间，C/C++把常量字符串放在一个单独的内存区域，当几个指针赋值给相同的常量字符串时，它们实际上会指向相同的内存地址。但用常量内存初始化数组是，情况却又不一样。
+
+	char str1[] = "hello world";
+	char str2[] = "hello world";
+	
+	char* str3 = "hello world";
+	char* str4 = "hello world";
+	
+	str1==str2 -->false
+	str3==str4 -->true
+
+str1和str2是两个初始地址不同的数组，因此str1和str2不同，str3和str4
+是两个指针同时指向内存中hello world的地址，由于该字符串为常量字符串，因此在内存中仅有一个拷贝，str3和str4指向同一个地址。
+
+而在C#中，String是不可变的，一旦试图改变String的内容，就会产生一个新的实例。
+	
+	String str = "hello";
+	str.ToUpper();
+	str.Insert(0,"World");
+
+str的内容不改变，改变的字符串会通过返回值通过新的String实例返回。若需要改变String的值，则使用StringBuilder
