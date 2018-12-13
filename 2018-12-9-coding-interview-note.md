@@ -379,3 +379,65 @@ str的内容不改变，改变的字符串会通过返回值通过新的String�
 		}
 	}
 
+## 面试题七 ##
+
+题目：输入某二叉树的前序遍历和中序遍历的结构，请重建该二叉树。假设输入的前序遍历和中序遍历中都不不含重复的数字。
+
+前序遍历第一个数字就是根节点的值，找到中序遍历中该对应值的位置，则左子树的序列在根节点左边，右子树的序列在右边。可利用递归的方法分别构建左右子树。
+
+	BinaryTreeNode* ConstructCore(int* startPreorder, int* endPreorder, int* startInorder, int* endInorder);
+	
+	BinaryTreeNode* Construct(int* preorder, int* inorder, int length)
+	{
+		if (preorder == nullptr || inorder == nullptr || length <= 0)
+			return nullptr;
+	
+		return ConstructCore(preorder, preorder + length - 1,
+			inorder, inorder + length - 1);
+	}
+	
+	BinaryTreeNode* ConstructCore
+	(
+		int* startPreorder, int* endPreorder,
+		int* startInorder, int* endInorder
+	)
+	{
+		// 前序遍历序列的第一个数字是根结点的值
+		int rootValue = startPreorder[0];
+		BinaryTreeNode* root = new BinaryTreeNode();
+		root->m_nValue = rootValue;
+		root->m_pLeft = root->m_pRight = nullptr;
+	
+		if (startPreorder == endPreorder)
+		{
+			if (startInorder == endInorder && *startPreorder == *startInorder)
+				return root;
+			else
+				throw std::exception("Invalid input.");
+		}
+	
+		// 在中序遍历中找到根结点的值
+		int* rootInorder = startInorder;
+		while (rootInorder <= endInorder && *rootInorder != rootValue)
+			++rootInorder;
+	
+		if (rootInorder == endInorder && *rootInorder != rootValue)
+			throw std::exception("Invalid input.");
+	
+		int leftLength = rootInorder - startInorder;
+		int* leftPreorderEnd = startPreorder + leftLength;
+		if (leftLength > 0)
+		{
+			// 构建左子树
+			root->m_pLeft = ConstructCore(startPreorder + 1, leftPreorderEnd,
+				startInorder, rootInorder - 1);
+		}
+		if (leftLength < endPreorder - startPreorder)
+		{
+			// 构建右子树
+			root->m_pRight = ConstructCore(leftPreorderEnd + 1, endPreorder,
+				rootInorder + 1, endInorder);
+		}
+	
+		return root;
+	}
