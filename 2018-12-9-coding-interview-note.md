@@ -481,3 +481,50 @@ str的内容不改变，改变的字符串会通过返回值通过新的String�
 	
 		return pNext;
 	}
+
+## 面试题九 ##
+
+用两个栈实现队列
+
+题目：用两个栈实现一个队列。队列的声明如下，请实现它的两个函数appendTail和deleteHead，分别完成在队列尾部插入结点和在队列头部删除结点的功能。
+
+思路如下：
+
+添加到尾部时，只需要将其push到stack1中；
+
+若需要在头部删除节点的时候，若stack2为空，则将stack1中的元素全部push到stack2，因为元素在添加到stack1时是先进后出，因此push到stack2后又将变成先进先出（顺序会和stack1调转），此后在使用stack2.top弹出头部元素即可实现队列的先进先出。
+
+	/**
+	往队列尾部添加元素
+	*/
+	template<typename T>
+	void CQueue::appendTail(const T& node) {
+		if (stack1 == nullptr)
+			stack1 = new stack<T>();
+		if (stack2 == nullptr)
+			stack2 = new stack<T>();
+		stack1.push(node);
+	}
+	/**
+	删除队列的头元素，并将其返回
+	*/
+	template<typename T>
+	T CQueue::deleteHead() {
+		if (stack2.size() <= 0)
+		{
+			while (stack1.size()>0)
+			{
+				T& data = stack1.top();
+				stack1.pop();
+				stack2.push(data);
+			}
+		}
+	
+		if (stack2.size() == 0)
+			throw new exception("queue is empty");
+
+		T head = stack2.top();
+		stack2.pop();
+
+		return head;
+	}
