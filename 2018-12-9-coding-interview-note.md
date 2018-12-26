@@ -643,3 +643,144 @@ Shell排序比冒泡排序快5倍，比插入排序大致快2倍。Shell排序�
 ![](https://i.imgur.com/tnafAfH.png)
 
 （转载自(http://flyingbread.cnblogs.com/)）
+
+## 回溯法 ##
+
+回溯法可以看作是brutal force的升级版，可以将解决问题的所有选项看成是一个树状结构。从根节点到叶节点的一条路径可以看作是问题的一个解，若路径满足题目要求，则找到一个解决方案。若在叶节点不满足条件，我们需要回溯到它的上一个节点寻找其他选项，若该节点所有选项都尝试过了，则在回到上一节点。若所有路径都不满足，则问题无解。
+
+## 面试题13：机器人的运动范围##
+
+
+题目：地上有一个m行n列的方格。一个机器人从坐标(0, 0)的格子开始移动，它每一次可以向左、右、上、下移动一格，但不能进入行坐标和列坐标的数位之和大于k的格子。例如，当k为18时，机器人能够进入方格(35, 37)，因为3+5+3+7=18。但它不能进入方格(35, 38)，因为3+5+3+8=19。请问该机器人能够到达多少个格子？
+
+	int movingCountCore(int threshold, int rows, int cols, int row, int col, bool* visited);
+	bool check(int threshold, int rows, int cols, int row, int col, bool* visited);
+	int getDigitSum(int number);
+	
+	int movingCount(int threshold, int rows, int cols)
+	{
+		if (threshold < 0 || rows <= 0 || cols <= 0)
+			return 0;
+	
+		bool *visited = new bool[rows * cols];
+		for (int i = 0; i < rows * cols; ++i)
+			visited[i] = false;
+	
+		int count = movingCountCore(threshold, rows, cols,
+			0, 0, visited);
+	
+		delete[] visited;
+	
+		return count;
+	}
+	
+	int movingCountCore(int threshold, int rows, int cols, int row,
+		int col, bool* visited)
+	{
+		int count = 0;
+		if (check(threshold, rows, cols, row, col, visited))
+		{
+			visited[row * cols + col] = true;
+	
+			count = 1 + movingCountCore(threshold, rows, cols,
+				row - 1, col, visited)
+				+ movingCountCore(threshold, rows, cols,
+					row, col - 1, visited)
+				+ movingCountCore(threshold, rows, cols,
+					row + 1, col, visited)
+				+ movingCountCore(threshold, rows, cols,
+					row, col + 1, visited);
+		}
+	
+		return count;
+	}
+	//判断能否进入row，col的格子
+	bool check(int threshold, int rows, int cols, int row, int col,
+		bool* visited)
+	{
+		if (row >= 0 && row < rows && col >= 0 && col < cols
+			&& getDigitSum(row) + getDigitSum(col) <= threshold
+			&& !visited[row* cols + col])
+			return true;
+	
+		return false;
+	}
+	
+	int getDigitSum(int number)
+	{
+		int sum = 0;
+		while (number > 0)
+		{
+			sum += number % 10;
+			number /= 10;
+		}
+	
+		return sum;
+	}
+
+## 动态规划以及贪心算法 ##
+
+若我们需要求一个问题的最优解，通常可以将其分解成若干个子问题，且子问题也可能有最优解。如果我们可以将小问题的最优解组合起来得到整个大问题的最优解。那么就可以使用动态规划来解决。为避免不必要的重复计算，使用自下而上的的循环代码来实现，也就是把子问题的最优解先算出来再用数组保存下来，接下来基于子问题的解求解大问题的解。
+
+### 面试题14：剪绳子 ###
+
+题目：给你一根长度为n绳子，请把绳子剪成m段（m、n都是整数，n>1并且m≥1）。每段的绳子的长度记为k[0]、k[1]、……、k[m]。k[0]*k[1]*…*k[m]可能的最大乘积是多少？例如当绳子的长度是8时，我们把它剪成长度分别为2、3、3的三段，此时得到最大的乘积18。
+
+我们使用一个长度为length+1的int数组存储长度为i的最优解。对于每一个子问题，我们通过循环求解可能存在的每一种情况，并将最大值保存在production数组中。
+
+	int maxProductAfterCutting_dynamicProgramming(int length) {
+		if (length < 2)
+			return 0;
+		if (length == 2)
+			return 1;
+		if (length == 3)
+			return 2;
+	
+		int *production = new int[length + 1];
+		production[0] = 0;
+		production[1] = 1;
+		production[2] = 2;
+		production[3] = 3;
+	
+		for (int i = 4; i < length + 1; i++) {
+			int max = 0;
+			//循环求解子问题的最优解
+			for (int j = 1; j <= i / 2; j++) {
+				int temp = production[i - j] * production[j];
+				max = max > temp ? max : temp;
+			}
+			production[i] = max;
+		}
+		int max = production[length];
+		delete[] production;
+		return max;
+	}
+
+### 贪婪算法 ###
+
+在用贪心算法解决问题的时候，每一步都可以做出一个贪婪的选择，基于此选择，我们可以确定能够得到最优解。
+
+在这个问题中，我们的贪心策略是尽可能多地剪长度为3的线段。
+
+	int maxProductAfterCutting_greedy(int length)
+	{
+		if (length < 2)
+			return 0;
+		if (length == 2)
+			return 1;
+		if (length == 3)
+			return 2;
+	
+		// 尽可能多地减去长度为3的绳子段
+		int timesOf3 = length / 3;
+	
+		// 当绳子最后剩下的长度为4的时候，不能再剪去长度为3的绳子段。
+		// 此时更好的方法是把绳子剪成长度为2的两段，因为2*2 > 3*1。
+		if (length - timesOf3 * 3 == 1)
+			timesOf3 -= 1;
+	
+		int timesOf2 = (length - timesOf3 * 3) / 2;
+	
+		return (int)(pow(3, timesOf3)) * (int)(pow(2, timesOf2));
+	}
+
